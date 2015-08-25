@@ -11,7 +11,8 @@ Gem::Specification.new do |s|
 
   # Files
   s.files = `git ls-files`.split($\)
-  #s.files = ['lib/logstash/inputs/telnet.rb', 'logstash-input-telnet.gemspec', 'spec/inputs/telnet_spec.rb', 'Gemfile', 'Rakefile']
+  #s.files = ["spec/inputs/telnet_spec.rb", "lib/logstash/inputs/telnet.rb", "logstash-input-telnet.gemspec", "Rakefile", "Gemfile"]
+
    # Tests
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
 
