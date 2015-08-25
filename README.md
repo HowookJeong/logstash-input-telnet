@@ -1,3 +1,35 @@
+# logstash-input-telnet
+
+# run command
+
+```
+bin/logstash -e '
+  input { 
+    telnet{
+      daemons => "localhost:9200|localhost:9300"
+      interval => "60"
+    }
+  }
+  
+  output {stdout { codec => rubydebug }}'
+```
+
+# arguments
+
+* daemons
+```
+each host delimiter : "|"
+hostname/port delimiter : ":"
+```
+
+* interval
+```
+unit : seconds
+default interval : 60s
+```
+
+==============
+
 # Logstash Plugin
 
 This is a plugin for [Logstash](https://github.com/elasticsearch/logstash).
