@@ -25,6 +25,11 @@ class LogStash::Inputs::Telnet < LogStash::Inputs::Base
   config :interval, :validate => :number, :default => 60
 
   public
+
+  def register
+      @host = Socket.gethostname
+  end # def register
+
   def run(queue)
     daemons = Array.new
     daemons=@daemons.split("|");
