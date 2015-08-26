@@ -17,7 +17,7 @@ class LogStash::Inputs::Telnet < LogStash::Inputs::Base
 
   # The message string to use in the event.
   config :message, :validate => :string, :default => "failure"
-  config :daemons, :validate => :string, :default => "localhost:9200|localhost:9300"
+  config :daemons, :validate => :string, :default => "localhost:9200:elasticsearch_http|localhost:9300:elasticsearch_transport"
 
   # Set how frequently messages should be sent.
   #
@@ -58,7 +58,7 @@ class LogStash::Inputs::Telnet < LogStash::Inputs::Base
           @message="failure"
         end
 
-        event = LogStash::Event.new("host" => daemon.at(0), "port" => daemon.at(1), "message" => @message)
+        event = LogStash::Event.new("host" => daemon.at(0), "port" => daemon.at(1), "daemon" => daemon.at(2), "message" => @message)
         decorate(event)
         queue << event
       end # for loop

@@ -6,7 +6,7 @@
 bin/logstash -e '
   input { 
     telnet{
-      daemons => "localhost:9200|localhost:9300"
+      daemons => "localhost:9200:elasticsearch_http|localhost:9300:elasticsearch_transport"
       interval => "60"
     }
   }
@@ -19,7 +19,7 @@ bin/logstash -e '
 * daemons
 ```
 each host delimiter : "|"
-hostname/port delimiter : ":"
+hostname/port/daemon delimiter : ":"
 ```
 
 * interval
